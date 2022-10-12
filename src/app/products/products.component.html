@@ -1,19 +1,22 @@
 <div class="container-fluid">
     <div class="row products p-3">
-        <div class="col-md-3 ">
-            <div class="card">
-                <img src="assets/images/ring2.jpg" alt="" class="img-fluid ">
-                <p class="item-detail">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, aut.</p>
-                <p  [ngStyle]="{'margin-top':'-15px','font-size':'12px'}"> <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </p>
-                <p [ngStyle]="{'margin-top':'-15px'}"><strong>$23.5</strong></p>
-            </div> 
-        </div>
-        <div class="col-md-3 ">
+        <ng-container *ngFor="let items of listProducts">
+            <div class="col-md-3 ">
+                <div class="card">
+                    <img [src]="items.image" alt="" >
+                    <p class="item-detail">{{items.title}}</p>
+                    <p  [ngStyle]="{'margin-top':'-15px','font-size':'12px'}"> <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </p>
+                    <p [ngStyle]="{'margin-top':'-15px'}"><strong>${{items.price}}</strong></p>
+                </div> 
+            </div>
+        </ng-container>
+       
+        <!-- <div class="col-md-3 ">
             <div class="card">
                 <img src="assets/images/ring2.jpg" alt="" class="img-fluid ">
                 <p class="item-detail">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, aut.</p>
@@ -90,7 +93,7 @@
                 </p>
                 <p [ngStyle]="{'margin-top':'-15px'}"><strong>$23.5</strong></p>
             </div> 
-        </div>
+        </div> -->
       
     </div>
     
