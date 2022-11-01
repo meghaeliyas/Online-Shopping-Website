@@ -1,16 +1,16 @@
-.products .card{
-    padding:15px;
+ .card{
+    padding:10px;
     margin-top: 25px;
-    
+    border: none;
     
 }
-.products .card img{
-    width:230px;
+ .card img{
+    width:250px;
     height:230px;
     margin-bottom: 10px;
     transition: 0.3s ease-in-out;
 }
-.products .card img:hover{
+.card img:hover{
     transition: 0.3s ease-in-out;
     transform:scale(1.1);
     cursor: pointer;

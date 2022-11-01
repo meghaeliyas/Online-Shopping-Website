@@ -1,0 +1,17 @@
+form a{
+    color:#f2a8c0;
+}
+.login-btn{
+    background-color:black;
+    color: white;
+}
+button i{
+    color:black;
+}
+/* validation css */
+input.ng-invalid.ng-touched{
+    border:1px solid red
+}
+small{
+    color: red;
+}

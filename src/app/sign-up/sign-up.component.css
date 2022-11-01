@@ -1,0 +1,25 @@
+.signup-btn{
+    background-color:black;
+    color: white;
+    transition: color ease 0.8s;
+    cursor: pointer;
+}
+.signup-btn:hover{
+    color: #f2a8c0;
+    cursor: pointer;
+    
+}
+button i{
+    color:black;
+    transition: color ease 0.8s;
+}
+button i:hover{
+    color: #f2a8c0;
+}
+/* validation class */
+input.ng-invalid.ng-touched{
+    border:1px solid red
+}
+small{
+    color: red;
+}

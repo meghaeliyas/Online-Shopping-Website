@@ -1,0 +1,14 @@
+.container-fluid {
+    background-color: black;
+}
+h2{
+    color:  #ef4279;
+}
+
+button i{
+    color:white;
+    transition: color ease 0.8s;
+}
+button i:hover{
+    color: #f2a8c0;
+}

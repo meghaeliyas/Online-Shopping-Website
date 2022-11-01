@@ -1,23 +1,24 @@
 <section>
     <header>
-        <div class="container-fluid p-3">
+        <div class="container-fluid p-2 mt-3 ">
             <div class="row">
                 <div class="col-md-4 ">
                     <div class="logo">
-                        <h2>CraftsGalaxy</h2>
+                        <h2 [routerLink]="['/Home']" >CraftsGalaxy</h2>
                     </div> 
                 </div>
                 <div class="col-md-4">
                     <div class="search">
-                        <input type="text" placeholder="Seaerch item">
-                        <a href="" class="search-icon"><i class="fa fa-search"></i></a>
+                        <input type="text" placeholder="Seaerch item"  [ngStyle]="{'color':'black'}" [(ngModel)]="searchItem" (keyup.enter)="search(searchItem)">
+                        <p class="search-icon" (click)="search(searchItem)"><i class="fa fa-search" ></i><p>
                     </div>
                 </div>
                 <div class="col-md-4 d-flex justify-content-end">
                     <div class="icons ">
-                        <a href="" class="cart"><i class="fa fa-shopping-cart"></i></a>
-                        <a href="animation.html" class="cta-btn">Join</a>
-                        <a href="animation.html" class="cta-btn">Sign In</a>
+                        <a href="" class="cart" [routerLink]="['/Mycart']"><i class="fa fa-shopping-cart"></i><span class="badge badge-secondary" [ngStyle]="{'color':'black'}">{{totalCartItem}}</span></a>
+                        <a [routerLink]="['/SignUp']" class="cta-btn">Join</a>
+                        <a [routerLink]="['/Login']" class="cta-btn" *ngIf="isLoggedIn == false">Sign In</a>
+                        <a [routerLink]="['/Home']" class="cta-btn" *ngIf="isLoggedIn == true">Sign Out</a>
                     </div>
                 </div>
             </div>
@@ -25,17 +26,21 @@
         <nav>
             <ul class="nav justify-content-center nav-bar">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link active" aria-current="page" (click)="filterCategory('jewellery')">Jewellery</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">About Us</a>
+                  <a class="nav-link"(click)="filterCategory('homedecor')">Home&Living</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Products</a>
+                  <a class="nav-link"(click)="filterCategory('gift')">Gift&GiftCards</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled">Contact</a>
-                </li>
+                    <a class="nav-link"(click)="filterCategory('accessories')"> Clothing&Shoes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"(click)="filterCategory('party')"> Wedding&Party</a>
+                  </li>
+               
               </ul>
         </nav>
        

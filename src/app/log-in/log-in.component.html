@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 ">
+            
+            <form class="p-4 mt-2" [formGroup]="logInForm"> 
+                <!-- Email input -->
+                <div class="form-outline mb-4 ">
+                  <input type="email" id="form1" class="form-control"  name="email" formControlName="email"/>
+                  <label class="form-label" for="form1">Email address</label>
+                  <div>
+                    <!-- <small *ngIf="email.invalid && email.touched && email.errors?.['required']">email must be filled</small> -->
+                  </div>
+                  <div>
+                    <!-- <small *ngIf="email.errors?.['email']">invalid mail id</small> -->
+                  </div>
+                </div>
+              
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="form2" class="form-control" name="pswd" formControlName="pswd" />
+                  <label class="form-label" for="form2">Password</label>
+                  <div>
+                    <!-- <small *ngIf="pswd.invalid && pswd.touched">password must be filled</small> -->
+                  </div>
+                </div>
+              
+                <!-- 2 column grid layout for inline styling -->
+                <div class="row mb-4">
+                  <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="form31" checked />
+                      <label class="form-check-label" for="form31"> Remember me </label>
+                      
+                    </div>
+                  </div>
+              
+                  <div class="col">
+                    <!-- Simple link -->
+                    <a href="#!">Forgot password?</a>
+                  </div>
+                </div>
+              
+                <!-- Submit button -->
+                <button type="submit" class="btn  btn-block mb-4 login-btn" (click)="logIn(logInForm.value)" [disabled]="logInForm.invalid">Sign in</button>
+              
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>Not a member? <a href="#!">Register</a></p>
+                  <p>or sign up with:</p>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+              
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                  </button>
+              
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+              
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                  </button>
+                </div>
+              </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
