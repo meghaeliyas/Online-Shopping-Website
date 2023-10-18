@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 ">
+            
+            <form class="p-4 mt-2" [formGroup]="addProduct" (ngSubmit)="add()" > 
+               <div>
+                <h2>Add Products </h2>
+               </div>
+                <div class="form-outline mb-4 ">
+                  <input type="email" id="form1" class="form-control"  name="title" formControlName="title"/>
+                  <label class="form-label" for="form1">Product Name</label>
+                </div>
+                <div class="form-outline mb-4 ">
+                    <input type="text" id="form1" class="form-control"  name="price" formControlName="price"/>
+                    <label class="form-label" for="form1">Product Price</label>
+                </div>
+                <div class="form-outline mb-4 ">
+                    <textarea name="description" id="" cols="30" rows="4"form formControlName="description"></textarea>
+                    <label class="form-label" for="form1">Description</label>
+                </div>
+                <div class="form-outline mb-4 ">
+                    <input type="text" id="form1" class="form-control"  name="category" formControlName="category"/>
+                    <label class="form-label" for="form1">Category</label>
+                </div>
+                <div class="form-outline mb-4 ">
+                    <input type="text" id="form1" class="form-control"  name="stock" formControlName="stock"/>
+                    <label class="form-label" for="form1">Stock No</label>
+                </div>
+                <div class="form-outline mb-4 ">
+                    <input type="text" id="form1" class="form-control"  name="rating" formControlName="rating"/>
+                    <label class="form-label" for="form1">Rating</label>
+                </div>
+              
+                <!-- Submit button -->
+                <button type="submit" class="btn  btn-block mb-4 login-btn" [disabled]="addProduct.invalid" >Sign in</button>
+              
+                
+              </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+

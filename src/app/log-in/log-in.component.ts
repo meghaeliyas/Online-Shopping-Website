@@ -12,7 +12,9 @@ import { AuthService } from '../services/auth.service';
 export class LogInComponent implements OnInit {
  
   logInForm:any = FormGroup;
-  
+  user:any;
+  error:string ='';
+  isLoggedIn:boolean = false;
   constructor( private fb:FormBuilder,
                private auth:AuthService, 
                private router:Router) { }
@@ -24,14 +26,28 @@ export class LogInComponent implements OnInit {
            });
   }
 
-  logIn(data:any){
-      let res = this.auth.isLoggedIn(data.email,data.pswd);
-        if(res === true){
-          this.router.navigate(['./Home']);
-        }else{
-          console.log('invalid'); 
-        }
+  get f(){return this.logInForm.controls;}
+
+  logIn(){
+     this.auth.isLoggedIn(this.logInForm.value).subscribe((res:any) =>{
+      this.user = res.find((a:any) =>{
+        return a.email === this.logInForm.value.email && a.pswd === this.logInForm.value.pswd;
+      })
+      if(this.user){
+        this.logInForm.reset();
+        this.router.navigate(['/Home']);
+        sessionStorage.setItem('userId',this.user['id']);
+      }else{
+        this.isLoggedIn = false;
+        this.error ='invalid username or password';
+        this.logInForm.reset();
+        this.router.navigate(['/Login']);
+      }
+     },err =>{
+      this.error = 'something went wron';
+     }) 
   }
+ 
   
 
 }

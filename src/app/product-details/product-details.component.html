@@ -54,17 +54,18 @@
                 <p [ngStyle]="{'font-size':'24px'}">{{productDetail?.title}}</p>
                 <p [ngStyle]="{'font-size':'22px' , 'font-weight':'700'}">${{productDetail?.price}}</p>
                 <p><span [ngStyle]="{'color':'green'}">Arrives soon!</span>  Get it by  <span [ngStyle]="{'text-decoration':'underline'}" >11-13 Oct</span></p>
-                <form action=""  >
+                <form #addQty="ngForm" (ngSubmit)="addtocart(addQty.value)" >
                     <label for="">Quantity</label><br>
-                    <select name="" id="" class="">
+                    <input type="text" name="quantity" ngModel >
+                    <!-- <select name="" id="" class=""  ngModel>
                         <option value="">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
                         <option value="">4</option>
                         <option value="">4</option>
-                    </select><br>
+                    </select><br> -->
                    
-                    <button (click)="addtocart(productDetail)">add to basket</button>
+                    <button >add to basket</button>
                 </form>
             </div>
             

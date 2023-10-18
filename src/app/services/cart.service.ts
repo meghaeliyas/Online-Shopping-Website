@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -6,44 +7,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartService {
 
-  cartItemlist:any = [];
-  productlist = new BehaviorSubject<any>([]);
+  // cartItemlist:any = [];
+  // productlist = new BehaviorSubject<any>([]);
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getProduct(){
-    return this.productlist.asObservable();
+  getCart(){
+    return this.http.get<any>('http://localhost:3000/cart');
   }
-
-  setProduct(product : any){
-    this.cartItemlist.push(...product);
-    this.productlist.next(product);
+  addtoChckOutlist(item:any){
+    return this.http.post<any>(`http://localhost:3000/checkout`,item);
   }
-
-  addToCart(product: any){
-    this.cartItemlist.push(product);
-    this.productlist.next(this.cartItemlist);
-    this.getTotalPrice();
-    console.log(this.cartItemlist);
+  addToCart(items:any){
+    return this.http.post<any>('http://localhost:3000/cart',items);
   }
-  getTotalPrice() : number{
-    let grandTotal = 0;
-    this.cartItemlist.map((a:any)=>{
-      grandTotal += a.total;
-    }) 
-    return grandTotal; 
-  }
-
-  removeCartItem(product : any){
-    this.cartItemlist.map((a:any, index:any) =>{
-      if(product.id === a.id){
-        this.cartItemlist.splice(index,1);
-      }
-    })
-  }
-
-  removeAllCart(){
-    this.cartItemlist = [];
-    this.productlist.next(this.cartItemlist);
+  removeItem(id:number){
+    return this.http.delete<any>('http://localhost:3000/cart/'+id);
   }
 }

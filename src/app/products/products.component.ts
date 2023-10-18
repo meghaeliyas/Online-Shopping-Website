@@ -40,12 +40,14 @@ export class ProductsComponent implements OnInit {
 
 // get all products
     getAll(){
-        this._pService.getProducts().subscribe((res:any) =>{
+      this._pService.getProducts().subscribe((res:any) =>{
         this.listProducts = res;
+       
         this.searchFilter();
-       
-       
       });
+      
+      
+      
     }
 
   //  search filter
@@ -56,19 +58,17 @@ export class ProductsComponent implements OnInit {
               this.listProducts = this.listProducts.filter(product => 
               product.title.toLowerCase().includes(params.searchItem));
               // console.log(this.listProducts);
+             
             }
             if(params.category){ // category filter
               this.listProducts = this.listProducts.filter(product => 
                 product.category.toLowerCase().includes(params.category));
               //  console.log(this.listProducts);
+              
             }else {
               this.listProducts;
             }
         });
-    }
-
-
-    
-    
+    }   
 
 }

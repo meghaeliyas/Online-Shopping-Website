@@ -15,10 +15,11 @@
                 </div>
                 <div class="col-md-4 d-flex justify-content-end">
                     <div class="icons ">
+                        <a [routerLink]="['/AddItem']" class="cta-btn" *ngIf="userid == 1 "> Add </a>
                         <a href="" class="cart" [routerLink]="['/Mycart']"><i class="fa fa-shopping-cart"></i><span class="badge badge-secondary" [ngStyle]="{'color':'black'}">{{totalCartItem}}</span></a>
                         <a [routerLink]="['/SignUp']" class="cta-btn">Join</a>
-                        <a [routerLink]="['/Login']" class="cta-btn" *ngIf="isLoggedIn == false">Sign In</a>
-                        <a [routerLink]="['/Home']" class="cta-btn" *ngIf="isLoggedIn == true">Sign Out</a>
+                        <a [routerLink]="['/Login']" class="cta-btn" *ngIf="userid == null">Sign In</a>
+                        <a  class="cta-btn" *ngIf="userid !== null" (click)="signOut()"> Sign Out </a>
                     </div>
                 </div>
             </div>

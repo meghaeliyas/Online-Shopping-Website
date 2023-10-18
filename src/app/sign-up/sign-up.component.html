@@ -1,4 +1,5 @@
 <!-- Section: Design Block -->
+
 <section class="">
     <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
       <div class="container">
@@ -19,15 +20,16 @@
           <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card">
               <div class="card-body py-5 px-md-5">
-                <form [formGroup]="signUpForm" >
+                <form [formGroup]="signUpForm" (ngSubmit)="signUp()" >
                   <!-- 2 column grid layout with text inputs for the first and last names -->
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
+                       
                         <input type="text" id="fname" class="form-control" formControlName="firstName" />
                         <label class="form-label" for="form3Example1">First name</label>
                         <div>
-                          <small *ngIf="firstName.errors?.['required'] && firstName.touched">First Name Required</small>
+                          <small *ngIf="f.firstName.errors?.['required'] && f.firstName.touched">First Name Required</small>
                         </div>
                       </div>
                     </div>
@@ -36,7 +38,7 @@
                         <input type="text" id="lname" class="form-control" formControlName="lastName" />
                         <label class="form-label" for="form3Example2">Last name</label>
                         <div>
-                          <small *ngIf="lastName.errors?.['required'] && lastName.touched">Last Name Required</small>
+                          <small *ngIf="f.lastName.errors?.['required'] && f.lastName.touched">Last Name Required</small>
                         </div>
                       </div>
                     </div>
@@ -47,8 +49,8 @@
                     <input type="email" id="email" class="form-control" formControlName="email" />
                     <label class="form-label" for="form3Example3">Email address</label>
                     <div>
-                      <small *ngIf="email.errors?.['required'] && email.touched">Email-id Required</small>
-                      <small *ngIf="email.errors?.['email'] ">Email is not valid</small>
+                      <small *ngIf="f.email.errors?.['required'] && f.email.touched">Email-id Required</small>
+                      <small *ngIf="f.email.errors?.['email'] ">Email is not valid</small>
                     </div>
                   </div>
 
@@ -58,8 +60,8 @@
                     <input type="text" id="phone" class="form-control" formControlName="phone" />
                     <label class="form-label" for="form3Example4">Phone Number</label>
                     <div>
-                      <small *ngIf="phone.errors?.['required'] && phone.touched">Phone Number Required</small>
-                      <small *ngIf="phone.errors?.['pattern'] ">Phone Number is not valid</small>
+                      <small *ngIf="f.phone.errors?.['required'] && f.phone.touched">Phone Number Required</small>
+                      <small *ngIf="f.phone.errors?.['pattern'] ">Phone Number is not valid</small>
                     </div>
                   </div>
 
@@ -68,13 +70,16 @@
                     <input type="password" id="pswd" class="form-control" formControlName="pswd" />
                     <label class="form-label" for="form3Example4">Password</label>
                     <div>
-                      <small *ngIf="pswd.errors?.['required'] && pswd.touched">Password Required</small>
-                      <small *ngIf="pswd.errors?.['minLength'] ">Password must contain 5 charactors</small>
+                      <small *ngIf="f.pswd.errors?.['required'] && f.pswd.touched">Password Required</small>
+                      <small *ngIf="f.pswd.errors?.['minLength'] ">Password must contain 5 charactors</small>
                     </div>
+                  </div>
+                  <div>
+                    <small>{{emailAlredyExist}}</small>
                   </div>
   
                   <!-- Submit button -->
-                  <button type="submit" class="btn  btn-block mb-4 signup-btn"(click)="signUp(signUpForm.value)" [disabled]="signUpForm.invalid"> 
+                  <button type="submit" class="btn  btn-block mb-4 signup-btn" [disabled]="signUpForm.invalid"> 
                     Sign up
                   </button>
   

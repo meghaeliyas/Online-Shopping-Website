@@ -13,7 +13,7 @@ export class GuardserviceService implements CanActivate{
   constructor(private authservice:AuthService, private router:Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
-   if(this.authservice.isAuthenticate()){
+   if(this.authservice.getSession()){
     return true;
    }else {
     this.router.navigate(['./Login']);

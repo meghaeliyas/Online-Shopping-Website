@@ -3,16 +3,19 @@
         <div class="col-md-4"></div>
         <div class="col-md-4 ">
             
-            <form class="p-4 mt-2" [formGroup]="logInForm"> 
+            <form class="p-4 mt-2" [formGroup]="logInForm" (ngSubmit)="logIn()"> 
                 <!-- Email input -->
+                <div>
+                  <small>{{error}}</small>
+                </div>
                 <div class="form-outline mb-4 ">
                   <input type="email" id="form1" class="form-control"  name="email" formControlName="email"/>
                   <label class="form-label" for="form1">Email address</label>
                   <div>
-                    <!-- <small *ngIf="email.invalid && email.touched && email.errors?.['required']">email must be filled</small> -->
+                    <small *ngIf="f.email.invalid && f.email.touched &&f. email.errors?.['required']">email must be filled</small>
                   </div>
                   <div>
-                    <!-- <small *ngIf="email.errors?.['email']">invalid mail id</small> -->
+                    <small *ngIf="f.email.errors?.['email']">invalid mail id</small>
                   </div>
                 </div>
               
@@ -21,7 +24,7 @@
                   <input type="password" id="form2" class="form-control" name="pswd" formControlName="pswd" />
                   <label class="form-label" for="form2">Password</label>
                   <div>
-                    <!-- <small *ngIf="pswd.invalid && pswd.touched">password must be filled</small> -->
+                    <small *ngIf="f.pswd.invalid && f.pswd.touched">password must be filled</small>
                   </div>
                 </div>
               
@@ -43,7 +46,7 @@
                 </div>
               
                 <!-- Submit button -->
-                <button type="submit" class="btn  btn-block mb-4 login-btn" (click)="logIn(logInForm.value)" [disabled]="logInForm.invalid">Sign in</button>
+                <button type="submit" class="btn  btn-block mb-4 login-btn"  [disabled]="logInForm.invalid">Sign in</button>
               
                 <!-- Register buttons -->
                 <div class="text-center">

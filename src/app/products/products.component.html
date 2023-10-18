@@ -3,7 +3,7 @@
         <ng-container *ngFor="let items of listProducts">
             <div class="col-md-3">
                 <div class="card" [routerLink]="['/Detail',items.id]">
-                    <img [src]="items.image" alt="" class="img-fluid">
+                    <img [src]="items.image" alt="" class="img-fluid" [alt]="items.title">
                     <p class="item-detail">{{items.title}}</p>
                     <p  [ngStyle]="{'margin-top':'-15px','font-size':'12px'}"> <span class="fa fa-star checked"></span>
                         <span *ngFor="let star of starList">

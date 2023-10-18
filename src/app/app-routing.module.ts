@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'Detail/:id',component:ProductDetailsComponent},
   {path: 'Login', component:LogInComponent},
   {path: 'SignUp', component:SignUpComponent},
-  {path: 'Mycart', component:CartComponent, canActivate:[GuardserviceService]}
+  {path: 'Mycart', component:CartComponent, canActivate:[GuardserviceService]},
+  {path: 'AddItem', component:AddProductComponent}
 ];
 
 @NgModule({
